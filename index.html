@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz de Música</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            margin: 0;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        label {
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        #resultado {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        #dica {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        img {
+            display: none; /* Inicialmente oculta */
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complete a Letra da Música</h1>
+    <p>And now days go by, and I never needed you</p>
+    <p>And now days go by, and I never needed you</p>
+    <p>And I worked so hard, and I __________ myself</p>
+    <p>And you broke my bones, and I ________ my soul</p>
+
+    <form id="quizForm">
+        <label for="blank1">Complete o espaço 1: </label>
+        <input type="text" id="blank1" required>
+        <br>
+
+        <label for="blank2">Complete o espaço 2: </label>
+        <input type="text" id="blank2" required>
+        <br>
+
+        <button type="button" onclick="verificarRespostas()">Verificar</button>
+        <button type="button" onclick="obterDica()">Dica</button>
+    </form>
+
+    <p id="resultado"></p>
+    <p id="dica"></p>
+
+    <img id="imagem-correta" src="image.png" alt="Correto!">
+
+    <script>
+        function verificarRespostas() {
+            var resposta1 = document.getElementById("blank1").value.toLowerCase();
+            var resposta2 = document.getElementById("blank2").value.toLowerCase();
+
+            if (resposta1 === "killed" && resposta2 === "sewed") {
+                document.getElementById("resultado").textContent = "Correto! Você completou a letra da música.";
+                document.getElementById("imagem-correta").style.display = "inline"; // Torna a imagem visível
+            } else {
+                document.getElementById("resultado").textContent = "Tente novamente. Alguma(s) resposta(s) está(ão) incorreta(s).";
+                document.getElementById("imagem-correta").style.display = "none"; // Oculta a imagem
+            }
+        }
+
+        function obterDica() {
+            document.getElementById("dica").textContent = "É uma música do seu álbum favorito.";
+        }
+    </script>
+</body>
+</html>
